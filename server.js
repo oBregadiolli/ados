@@ -19,11 +19,11 @@ app.post('/send-email', async (req, res) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-Postmark-Server-Token': '27812eba-5e50-4b81-8ae5-71b3949b4329'
+                'X-Postmark-Server-Token': '470f2650-9e02-4904-9bf0-27e8d2bb98e8'
             },
             body: JSON.stringify({
-                "From": "order@flashguyscleaning.com",
-                "To": "bregadiolli.contato@gmail.com",
+                "From": "admin@adosmind.com",
+                "To": "admin@adosmind.com",
                 "Subject": "Novo Contato do Formulário",
                 "TextBody": `Name: ${name}\nEmail: ${email}\nTel: ${tel}\nMessage: ${message}\nCompany: ${company}\nCountry: ${country}\nI am a: ${select}\nInstagram: ${social1}\nTikTok: ${social2}\nWebsite: ${social3}\nServices: ${services}`
             })
