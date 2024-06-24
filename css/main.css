@@ -42,6 +42,11 @@ footer, .contact, .testimonials__container, .faq__container, .hiw__container {
   margin: 6rem 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 180px;
+}
+
 body {
   font-family: "Onest", sans-serif;
   background-color: #1E1E1E;
@@ -73,6 +78,23 @@ body {
   font-size: 1rem;
   font-weight: 200;
   color: rgba(255, 255, 255, 0.85);
+}
+
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(19, 19, 19);
+  z-index: 9999;
+}
+
+#content {
+  display: none;
 }
 
 .hero__text-cta {
@@ -271,7 +293,7 @@ body {
   height: 1rem;
 }
 .hero__video {
-  width: 48%;
+  width: 46%;
   text-align: end;
 }
 .hero__video video {
@@ -423,6 +445,7 @@ body {
   padding: 2rem;
   max-width: 1250px;
   margin: 0 auto;
+  margin-top: 48px;
 }
 @media (max-width: 599px) {
   .hiw__container {
@@ -605,11 +628,25 @@ body {
   border-radius: 12px;
   background-color: #2B2B2B;
   margin-bottom: 1.4rem;
-  transition: 0.2s;
+  transition: 0.4s;
 }
-.faq__accordion__item:hover, .faq__accordion__item.active {
+.faq__accordion__item:hover {
   cursor: pointer;
   background-color: #353535;
+}
+@media (max-width: 599px) {
+  .faq__accordion__item:hover {
+    background-color: #2B2B2B;
+  }
+}
+.faq__accordion__item.active {
+  cursor: pointer;
+  background-color: #353535;
+}
+@media (max-width: 599px) {
+  .faq__accordion__item.active {
+    background-color: #2B2B2B;
+  }
 }
 .faq__question {
   width: 100%;
@@ -624,7 +661,7 @@ body {
   border: none;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  transition: 0.4s;
+  transition: background-color 0.4s ease, color 0.4s ease;
   display: flex;
   line-height: 1;
   justify-content: space-between;
@@ -647,6 +684,8 @@ body {
   color: rgba(255, 255, 255, 0.85);
   font-weight: 300;
   display: none;
+  cursor: auto;
+  transition: opacity 0.4s ease;
 }
 
 .rotate-icon {
@@ -858,7 +897,7 @@ body {
 }
 .contact .form__group input, .contact .form__group select, .contact .form__group textarea {
   font-weight: 400;
-  padding: 0.8rem;
+  padding: 0.9rem;
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
   border-width: 1px;
@@ -868,6 +907,7 @@ body {
   background: linear-gradient(90deg, #2B2B2B, #2B2B2B) padding-box, linear-gradient(-225deg, #535353, #2C2C2C) border-box;
   border-color: transparent;
   transition: 0.2s;
+  accent-color: rgb(111, 100, 255);
 }
 .contact .form__group input:hover, .contact .form__group input:focus, .contact .form__group select:hover, .contact .form__group select:focus, .contact .form__group textarea:hover, .contact .form__group textarea:focus {
   background: linear-gradient(90deg, #363636, #363636) padding-box, linear-gradient(-225deg, #535353, #2C2C2C) border-box;
@@ -932,6 +972,11 @@ body {
 }
 .contact .form button:hover {
   background-color: rgba(31, 31, 31, 0.4196078431);
+}
+@media (max-width: 599px) {
+  .contact .form button:hover {
+    background-color: rgba(31, 31, 31, 0.9529411765);
+  }
 }
 
 .service-1 {
@@ -1173,6 +1218,9 @@ footer h4 {
   }
   .services__container .services__navbar {
     display: none;
+  }
+  .services__container .services__content .services__left .services__item {
+    height: 40vh;
   }
 }
 .plans {
