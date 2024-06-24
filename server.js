@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/send-email', async (req, res) => {
-    const { name, email, tel, message, company, country, select, social1, social2, social3, service1, service2, service3  } = req.body;
+    const { name, email, tel, message, company, country, select, social1, social2, social3, services } = req.body;
 
     try {
         const response = await fetch('https://api.postmarkapp.com/email', {
@@ -25,19 +25,19 @@ app.post('/send-email', async (req, res) => {
                 "From": "order@flashguyscleaning.com",
                 "To": "bregadiolli.contato@gmail.com",
                 "Subject": "Novo Contato do Formulário",
-                "TextBody": `Name: ${name}\nEmail: ${email}\nTel: ${tel}\nMessage: ${message}\nCompany: ${company}\nCountry: ${country}\nI am a: ${select}\nInstagram: ${social1}\nTikTok: ${social2}\nWebsite: ${social3}\nService: ${service1},${service2}, ${service3}`
+                "TextBody": `Name: ${name}\nEmail: ${email}\nTel: ${tel}\nMessage: ${message}\nCompany: ${company}\nCountry: ${country}\nI am a: ${select}\nInstagram: ${social1}\nTikTok: ${social2}\nWebsite: ${social3}\nServices: ${services}`
             })
         });
 
         const data = await response.json();
 
         if (data.ErrorCode === 0) {
-            res.status(200).json({ message: 'Email enviado com sucesso!' });
+            res.status(200).json({ message: 'Email successfully sent!' });
         } else {
-            res.status(500).json({ message: 'Erro ao enviar email: ' + data.Message });
+            res.status(500).json({ message: 'Error sending email: ' + data.Message });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao enviar email: ' + error.message });
+        res.status(500).json({ message: 'Error sending email: ' + error.message });
     }
 });
 
